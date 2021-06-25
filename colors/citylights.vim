@@ -208,7 +208,7 @@ call s:hi("SpellLocal",  s:citylights.white.gui,  s:none,                 s:city
 call s:hi("SpellRare",   s:citylights.blue.gui,   s:none,                 s:citylights.blue.tui,   s:none,                 "undercurl", '')
 call s:hi("Visual",      '',                      '',                     '',                      237,                    '',          '')
 call s:hi("VisualNOS",   '',                      '',                     '',                      237,                    '',          '')
-call s:hi("Directory",   '',                      '',                     s:citylights.teal.tui,   "NONE",                 '',          '')
+call s:hi("Directory",   s:citylights.steel.gui,  '',                     s:citylights.steel.tui,  "NONE",                 '',          '')
 call s:hi("EndOfBuffer", s:citylights.grey.gui,   s:none,                 s:citylights.grey.tui,   "NONE",                 '',          '')
 
 " call s:hi("IncSearch", s:nord6_gui, s:nord10_gui, s:nord6_term, s:nord10_term, s:underline, '')
