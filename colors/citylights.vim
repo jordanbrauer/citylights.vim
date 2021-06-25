@@ -42,20 +42,21 @@ let s:italic      = 'italic,'
 let s:underline   = 'underline,'
 let s:none        = 'NONE'
 let s:citylights  = {
-  \ 'black':  '0',
-  \ 'white':  7,
-  \ 'red':    1,
-  \ 'blue':   25,
-  \ 'green':  23,
-  \ 'yellow': 3,
-  \ 'grey':   235,
-  \ 'steel':  243,
-  \ 'teal':   80,
-  \ 'azure':  39,
-  \ 'aqua':   123,
-  \ 'orange': 215,
-  \ 'brown':  130,
-  \ 'success': 2
+  \ 'black':   { 'tui': '0', 'gui': '#1f252b' },
+  \ 'white':   { 'tui': 7,   'gui': '#b7c5d3' },
+  \ 'grey':    { 'tui': 238, 'gui': '#41505e' },
+  \ 'red':     { 'tui': 1,   'gui': '#e27e8d' },
+  \ 'green':   { 'tui': 23,  'gui': '#54af83' },
+  \ 'blue':    { 'tui': 25,  'gui': '#68a1f0' },
+  \ 'yellow':  { 'tui': 3,   'gui': '#ebda65' },
+  \ 'success': { 'tui': 2,   'gui': '#54af83' },
+  \ 'sage':    { 'tui': 23,  'gui': '#008b94' },
+  \ 'steel':   { 'tui': 243, 'gui': '#718ca1' },
+  \ 'teal':    { 'tui': 80,  'gui': '#70e1e8' },
+  \ 'azure':   { 'tui': 39,  'gui': '#5ec4ff' },
+  \ 'aqua':    { 'tui': 123, 'gui': '#9effff' },
+  \ 'orange':  { 'tui': 215, 'gui': '#ebbf83' },
+  \ 'brown':   { 'tui': 130, 'gui': '' },
   \ }
 
 ""+- Vim 8 Terminal Colors -+
@@ -116,7 +117,7 @@ function! s:hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
   endif
 
   if a:attr != ""
-    exec "hi " . a:group . " gui=" . a:attr . " cterm=" . substitute(a:attr, "undercurl", s:underline, "")
+    exec "hi " . a:group . " gui=" . a:attr . " cterm=" . substitute(a:attr, "undercurl", s:underline, '')
   endif
 
   if a:guisp != ""
@@ -128,132 +129,132 @@ endfunction
 " Formatting
 " =============================================================================
 
-call s:hi("Bold",      "", "", "", "", s:bold,      "")
-call s:hi("Italic",    "", "", "", "", s:italic,    "")
-call s:hi("Underline", "", "", "", "", s:underline, "")
+call s:hi("Bold",      '', '', '', '', s:bold,      '')
+call s:hi("Italic",    '', '', '', '', s:italic,    '')
+call s:hi("Underline", '', '', '', '', s:underline, '')
 
 " =============================================================================
 " Tokens
 " =============================================================================
 
-call s:hi('Comment', s:none, s:none, s:citylights.grey, s:none, '', '')
- 
-call s:hi('Constant',  s:none, s:none, s:citylights.red,  s:none, '', '')
-call s:hi('String',    s:none, s:none, s:citylights.blue, s:none, '', '')
-call s:hi('Character', s:none, s:none, s:citylights.red,  s:none, '', '')
-call s:hi('Number',    s:none, s:none, s:citylights.red,  s:none, '', '')
-call s:hi('Boolean',   s:none, s:none, s:citylights.red,  s:none, '', '')
-call s:hi('Float',     s:none, s:none, s:citylights.red,  s:none, '', '')
+call s:hi('Comment',   s:citylights.grey.gui, s:none, s:citylights.grey.tui, s:none, '', '') 
+call s:hi('Constant',  s:citylights.red.gui,  s:none, s:citylights.red.tui,  s:none, '', '')
+call s:hi('String',    s:citylights.blue.gui, s:none, s:citylights.blue.tui, s:none, '', '')
+call s:hi('Character', s:citylights.red.gui,  s:none, s:citylights.red.tui,  s:none, '', '')
+call s:hi('Number',    s:citylights.red.gui,  s:none, s:citylights.red.tui,  s:none, '', '')
+call s:hi('Boolean',   s:citylights.red.gui,  s:none, s:citylights.red.tui,  s:none, '', '')
+call s:hi('Float',     s:citylights.red.gui,  s:none, s:citylights.red.tui,  s:none, '', '')
 
-call s:hi('Identifier', s:none, s:none, s:citylights.orange, '',     s:none, '')
-call s:hi('Function',   s:none, s:none, s:citylights.teal,   s:none, '',     '')
+call s:hi('Identifier', s:citylights.orange.gui, s:none, s:citylights.orange.tui, '',     s:none, '')
+call s:hi('Function',   s:citylights.teal.gui,   s:none, s:citylights.teal.tui,   s:none, '',     '')
 
-call s:hi('Statement',   s:none, s:none, s:citylights.azure, s:none, '', '')
-call s:hi('Conditional', s:none, s:none, s:citylights.azure, s:none, '', '')
-call s:hi('Repeat',      s:none, s:none, s:citylights.azure, s:none, '', '')
-call s:hi('Label',       s:none, s:none, s:citylights.azure, s:none, '', '')
-call s:hi('Operator',    s:none, s:none, s:citylights.azure, s:none, '', '')
-call s:hi('Keyword',     s:none, s:none, s:citylights.azure, s:none, '', '')
-call s:hi('Exception',   s:none, s:none, s:citylights.azure, s:none, '', '')
+call s:hi('Statement',   s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, s:none, '')
+call s:hi('Conditional', s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '',     '')
+call s:hi('Repeat',      s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '',     '')
+call s:hi('Label',       s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '',     '')
+call s:hi('Operator',    s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '',     '')
+call s:hi('Keyword',     s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '',     '')
+call s:hi('Exception',   s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '',     '')
 
-call s:hi('PreProc',   s:none, s:none, s:citylights.azure, s:none, '', '')
-call s:hi('Include',   s:none, s:none, s:citylights.azure, s:none, '', '')
-call s:hi('Define',    s:none, s:none, s:citylights.green, s:none, '', '')
-call s:hi('Macro',     s:none, s:none, s:citylights.green, s:none, '', '')
-call s:hi('PreCondit', s:none, s:none, s:citylights.green, s:none, '', '')
+call s:hi('PreProc',   s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '', '')
+call s:hi('Include',   s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '', '')
+call s:hi('Define',    s:citylights.sage.gui,  s:none, s:citylights.green.tui, s:none, '', '')
+call s:hi('Macro',     s:citylights.sage.gui,  s:none, s:citylights.green.tui, s:none, '', '')
+call s:hi('PreCondit', s:citylights.sage.gui,  s:none, s:citylights.green.tui, s:none, '', '')
 
-call s:hi('Type',         s:none, s:none, s:citylights.green, s:none, '', '')
-call s:hi('StorageClass', s:none, s:none, s:citylights.green, s:none, '', '')
-call s:hi('Structure',    s:none, s:none, s:citylights.green, s:none, '', '')
-call s:hi('Typedef',      s:none, s:none, s:citylights.green, s:none, '', '')
+call s:hi('Type',         s:citylights.sage.gui, s:none, s:citylights.green.tui, s:none, s:none, '')
+call s:hi('StorageClass', s:citylights.sage.gui, s:none, s:citylights.green.tui, s:none, '',     '')
+call s:hi('Structure',    s:citylights.sage.gui, s:none, s:citylights.green.tui, s:none, '',     '')
+call s:hi('Typedef',      s:citylights.sage.gui, s:none, s:citylights.green.tui, s:none, '',     '')
 
-call s:hi('Special',     s:none, s:none, s:citylights.steel, s:none, '', '')
-call s:hi('SpecialChar', s:none, s:none, s:citylights.red,   s:none, '', '')
-" call s:hi('Tag', s:none, s:none, s:none, s:none, s:citylights.red)
-" call s:hi('Delimiter', s:none, s:none, s:none, s:none, s:citylights.red)
-" call s:hi('SpecialComment', s:none, s:none, s:none, s:none, s:citylights.red)
-" call s:hi('Debug', s:none, s:none, s:none, s:none, s:citylights.red)
+call s:hi('Special',     s:citylights.steel.gui, s:none, s:citylights.steel.tui, s:none, '', '')
+call s:hi('SpecialChar', s:citylights.red.tui,   s:none, s:citylights.red.tui,   s:none, '', '')
+" call s:hi('Tag', s:none, s:none, s:none, s:none, s:citylights.red.tui)
+" call s:hi('Delimiter', s:none, s:none, s:none, s:none, s:citylights.red.tui)
+" call s:hi('SpecialComment', s:none, s:none, s:none, s:none, s:citylights.red.tui)
+" call s:hi('Debug', s:none, s:none, s:none, s:none, s:citylights.red.tui)
 
 " =============================================================================
 " NeoVim
 " =============================================================================
 
-call s:hi("healthError",   '', '', s:citylights.red,    s:citylights.black, "", "")
-call s:hi("healthSuccess", '', '', s:citylights.green,  s:citylights.black, "", "")
-call s:hi("healthWarning", '', '', s:citylights.yellow, s:citylights.black, "", "")
-call s:hi("TermCursorNC",  "", '', "",                  s:citylights.black, "", "")
+call s:hi("healthError",   s:citylights.red.gui,    '',                     s:citylights.red.tui,    s:citylights.black.tui, '', '')
+call s:hi("healthSuccess", s:citylights.green.gui,  '',                     s:citylights.green.tui,  s:citylights.black.tui, '', '')
+call s:hi("healthWarning", s:citylights.yellow.gui, '',                     s:citylights.yellow.tui, s:citylights.black.tui, '', '')
+call s:hi("TermCursorNC",  '',                      s:citylights.black.gui, '',                      s:citylights.black.tui, '', '')
 
 " =============================================================================
 " Window
 " =============================================================================
 
-call s:hi("Title",       '', "", "NONE",               "",                 "NONE",      "")
-call s:hi("VertSplit",   '', '', s:citylights.grey,    "NONE",             "NONE",      "")
-call s:hi("ColorColumn", "", '', "NONE",               s:citylights.steel, "",          "")
-call s:hi("Cursor",      '', '', "",                   "NONE",             "",          "")
-call s:hi("CursorLine",  "", '', "NONE",               s:citylights.grey,  "NONE",      "")
-call s:hi("Error",       '', '', "",                   s:citylights.red,   "",          "")
-call s:hi("iCursor",     '', '', "",                   "NONE",             "",          "")
-call s:hi("MatchParen",  '', '', s:citylights.success, s:none,             "",          "")
-call s:hi("NonText",     '', "", s:citylights.black,   "",                 "",          "")
-call s:hi("Normal",      '', '', "NONE",               "NONE",             "",          "")
-call s:hi("Pmenu",       '', '', "NONE",               s:citylights.black, "NONE",      "")
-call s:hi("PmenuSbar",   '', '', "NONE",               s:citylights.black, "",          "")
-call s:hi("PmenuSel",    '', '', s:citylights.black,   s:citylights.blue,  "",          "")
-call s:hi("PmenuThumb",  '', '', "NONE",               8,                  "",          "")
-call s:hi("SpecialKey",  '', '', 8,                    "",                 "",          "")
-call s:hi("SpellBad",    '', '', s:citylights.red,     "NONE",             "undercurl", '')
-call s:hi("SpellCap",    '', '', s:citylights.yellow,  "NONE",             "undercurl", '')
-call s:hi("SpellLocal",  '', '', s:citylights.white,   "NONE",             "undercurl", '')
-call s:hi("SpellRare",   '', '', 15,                   "NONE",             "undercurl", '')
-call s:hi("Visual",      "", '', "",                   237,                "",          "")
-call s:hi("VisualNOS",   "", '', "",                   237,                "",          "")
-call s:hi("Directory",   '', "", s:citylights.teal,    "NONE",             "",          "")
+call s:hi("Title",       '',                      '',                     "NONE",                  '',                     "NONE",      '')
+call s:hi("VertSplit",   s:citylights.grey.gui,   s:none,                 s:citylights.grey.tui,   "NONE",                 "NONE",      '')
+call s:hi("ColorColumn", s:none,                  '#242b33',              s:none,                  s:citylights.grey.tui, '',          '')
+call s:hi("Cursor",      '',                      s:none,                 '',                      s:none,                 '',          '')
+call s:hi("CursorLine",  s:none,                  s:citylights.grey.gui,  "NONE",                  s:citylights.grey.tui,  "NONE",      '')
+call s:hi("Error",       '',                      s:citylights.red.gui,   '',                      s:citylights.red.tui,   '',          '')
+call s:hi("iCursor",     '',                      s:none,                 '',                      "NONE",                 '',          '')
+call s:hi("MatchParen",  s:none,                  s:citylights.white.gui, s:none,                  s:citylights.white.tui, '',          '')
+call s:hi("NonText",     s:citylights.black.gui,  '',                     s:citylights.black.tui,  '',                     '',          '')
+call s:hi("Normal",      s:none,                  s:none,                 "NONE",                  "NONE",                 '',          '')
+call s:hi("Pmenu",       s:none,                  s:citylights.black.gui, "NONE",                  s:citylights.black.tui, "NONE",      '')
+call s:hi("PmenuSbar",   s:none,                  s:citylights.black.gui, "NONE",                  s:citylights.black.tui, '',          '')
+call s:hi("PmenuSel",    s:citylights.black.gui,  s:citylights.blue.gui,  s:citylights.black.tui,  s:citylights.blue.tui,  '',          '')
+call s:hi("PmenuThumb",  s:none,                  s:citylights.white.gui, s:none,                  s:citylights.white.tui, '',          '')
+call s:hi("SpecialKey",  s:citylights.white.gui,  '',                     s:citylights.white.tui,  '',                     '',          '')
+call s:hi("SpellBad",    s:citylights.red.gui,    s:none,                 s:citylights.red.tui,    "NONE",                 "undercurl", '')
+call s:hi("SpellCap",    s:citylights.yellow.gui, s:none,                 s:citylights.yellow.tui, "NONE",                 "undercurl", '')
+call s:hi("SpellLocal",  s:citylights.white.gui,  s:none,                 s:citylights.white.tui,  "NONE",                 "undercurl", '')
+call s:hi("SpellRare",   s:citylights.blue.gui,   s:none,                 s:citylights.blue.tui,   s:none,                 "undercurl", '')
+call s:hi("Visual",      '',                      '',                     '',                      237,                    '',          '')
+call s:hi("VisualNOS",   '',                      '',                     '',                      237,                    '',          '')
+call s:hi("Directory",   '',                      '',                     s:citylights.teal.tui,   "NONE",                 '',          '')
+call s:hi("EndOfBuffer", s:citylights.grey.gui,   s:none,                 s:citylights.grey.tui,   "NONE",                 '',          '')
 
-" call s:hi("IncSearch", s:nord6_gui, s:nord10_gui, s:nord6_term, s:nord10_term, s:underline, "")
-" call s:hi("Search", s:nord1_gui, s:nord8_gui, s:nord1_term, s:nord8_term, "NONE", "")
+" call s:hi("IncSearch", s:nord6_gui, s:nord10_gui, s:nord6_term, s:nord10_term, s:underline, '')
+" call s:hi("Search", s:nord1_gui, s:nord8_gui, s:nord1_term, s:nord8_term, "NONE", '')
 
-" call s:hi("TabLine", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
-" call s:hi("TabLineFill", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
-" call s:hi("TabLineSel", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "NONE", "")
+" call s:hi("TabLine", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", '')
+" call s:hi("TabLineFill", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", '')
+" call s:hi("TabLineSel", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "NONE", '')
 
 " =============================================================================
 " Prompt
 " =============================================================================
 
-call s:hi("EndOfBuffer", '', "", s:citylights.white, "NONE",           "", "")
-call s:hi("ErrorMsg",    '', '', "NONE",             s:citylights.red, "", "")
-call s:hi("ModeMsg",     '', "", "",                 "",               "", "")
-call s:hi("MoreMsg",     '', "", s:citylights.white, "",               "", "")
-call s:hi("Question",    '', "", "NONE",             "",               "", "")
-" call s:hi("WarningMsg", s:nord0_gui, s:nord13_gui, s:nord1_term, s:nord13_term, "",g "")
-" call s:hi("WildMenu", s:nord8_gui, s:nord1_gui, s:nord8_term, s:nord1_term, "", "")
+call s:hi("ErrorMsg",    s:none,                 s:citylights.red.gui,   "NONE",                 s:citylights.red.tui, '', '')
+call s:hi("ModeMsg",     '',                     '',                     '',                     '',                   '', '')
+call s:hi("MoreMsg",     s:citylights.white.gui, '',                     s:citylights.white.tui, '',                   '', '')
+call s:hi("Question",    s:none,                 '',                     "NONE",                 '',                   '', '')
+" call s:hi("WarningMsg", s:nord0_gui, s:nord13_gui, s:nord1_term, s:nord13_term, '',g '')
+" call s:hi("WildMenu", s:nord8_gui, s:nord1_gui, s:nord8_term, s:nord1_term, '', '')
 
 " =============================================================================
 " Status Line
 " =============================================================================
 
-call s:hi("StatusLine",       '', '', s:citylights.white, s:citylights.black, "NONE", "")
-call s:hi("StatusLineNC",     '', '', "NONE",             s:citylights.black, "NONE", "")
-call s:hi("StatusLineTerm",   '', '', s:citylights.white, s:citylights.black, "NONE", "")
-call s:hi("StatusLineTermNC", '', '', "NONE",             s:citylights.black, "NONE", "")
+call s:hi("StatusLine",       s:citylights.white.gui, s:citylights.black.tui, s:citylights.white.tui, s:citylights.black.tui, "NONE", '')
+call s:hi("StatusLineNC",     s:none,                 s:citylights.black.gui, "NONE",                 s:citylights.black.tui, "NONE", '')
+call s:hi("StatusLineTerm",   s:citylights.white.gui, s:citylights.black.gui, s:citylights.white.tui, s:citylights.black.tui, "NONE", '')
+call s:hi("StatusLineTermNC", s:none,                 s:citylights.black.gui, "NONE",                 s:citylights.black.tui, "NONE", '')
 
 " =============================================================================
 " Gutter
 " =============================================================================
+"
+" Plugin: airblade/vim-gitgutter
 
-call s:hi("CursorColumn", "", "", "NONE",             s:citylights.black, "",     "")
-call s:hi("CursorLineNr", '', "", s:citylights.white, s:none,             "NONE", "")
-call s:hi("LineNr",       '', "", s:citylights.grey,  s:none,             "NONE", "")
-call s:hi("SignColumn",   '', '', s:none,             s:citylights.black, "",     "")
+call s:hi("CursorColumn", s:none,                 s:citylights.black.gui, s:none,                 s:citylights.black.tui, '',     '')
+call s:hi("CursorLineNr", s:citylights.white.gui, s:none,                 s:citylights.white.tui, s:none,                 "NONE", '')
+call s:hi("LineNr",       s:citylights.grey.gui,  s:none,                 s:citylights.grey.tui,  s:none,                 "NONE", '')
+call s:hi("SignColumn",   s:none,                 s:citylights.black.gui, s:none,                 s:citylights.black.tui, '',     '')
 " call s:hi('Folded', s:nord3_gui, s:nord1_gui, s:nord3_term, s:nord1_term, s:bold, '')
 " call s:hi('FoldColumn', s:nord3_gui, s:nord0_gui, s:nord3_term, s:none, '', '')
 
-" airblade/vim-gitgutter
-call s:hi("GitGutterAdd",          '', "", s:citylights.success, "", "", "")
-call s:hi("GitGutterChange",       '', "", s:citylights.yellow,  "", "", "")
-call s:hi("GitGutterChangeDelete", '', "", s:citylights.blue,    "", "", "")
-call s:hi("GitGutterDelete",       '', "", s:citylights.red,     "", "", "")
+call s:hi("GitGutterAdd",          s:citylights.green.gui,  '', s:citylights.success.tui, '', s:bold, '')
+call s:hi("GitGutterChange",       s:citylights.yellow.gui, '', s:citylights.yellow.tui,  '', s:bold, '')
+call s:hi("GitGutterChangeDelete", s:citylights.red.gui,    '', s:citylights.red.tui,     '', s:bold, '')
+call s:hi("GitGutterDelete",       s:citylights.red.gui,    '', s:citylights.red.tui,     '', s:bold, '')
 
 " =============================================================================
 " LSP
@@ -261,14 +262,14 @@ call s:hi("GitGutterDelete",       '', "", s:citylights.red,     "", "", "")
 "
 " Plugin: neovim/nvim-lspconfig
 
-call s:hi("LspDiagnosticsDefaultWarning",       '', "", s:citylights.yellow, "", "",          "")
-call s:hi("LspDiagnosticsDefaultError",         '', "", s:citylights.red,    "", "",          "")
-call s:hi("LspDiagnosticsDefaultInformation",   '', "", s:citylights.blue,   "", "",          "")
-call s:hi("LspDiagnosticsDefaultHint",          '', "", s:citylights.white,  "", "",          "")
-call s:hi("LspDiagnosticsUnderlineWarning",     '', "", s:citylights.yellow, "", "undercurl", "")
-call s:hi("LspDiagnosticsUnderlineError",       '', "", s:citylights.red,    "", "undercurl", "")
-call s:hi("LspDiagnosticsUnderlineInformation", '', "", s:citylights.blue,   "", "undercurl", "")
-call s:hi("LspDiagnosticsUnderlineHint",        '', "", s:citylights.white,  "", "undercurl", "")
+call s:hi("LspDiagnosticsDefaultWarning",       s:citylights.yellow.gui, '', s:citylights.yellow.tui, '', '',          '')
+call s:hi("LspDiagnosticsDefaultError",         s:citylights.red.gui,    '', s:citylights.red.tui,    '', '',          '')
+call s:hi("LspDiagnosticsDefaultInformation",   s:citylights.blue.gui,   '', s:citylights.blue.tui,   '', '',          '')
+call s:hi("LspDiagnosticsDefaultHint",          s:citylights.white.gui,  '', s:citylights.white.tui,  '', '',          '')
+call s:hi("LspDiagnosticsUnderlineWarning",     s:citylights.yellow.gui, '', s:citylights.yellow.tui, '', "undercurl", '')
+call s:hi("LspDiagnosticsUnderlineError",       s:citylights.red.gui,    '', s:citylights.red.tui,    '', "undercurl", '')
+call s:hi("LspDiagnosticsUnderlineInformation", s:citylights.blue.gui,   '', s:citylights.blue.tui,   '', "undercurl", '')
+call s:hi("LspDiagnosticsUnderlineHint",        s:citylights.white.gui,  '', s:citylights.white.tui,  '', "undercurl", '')
 
 " =============================================================================
 " Git
@@ -276,29 +277,31 @@ call s:hi("LspDiagnosticsUnderlineHint",        '', "", s:citylights.white,  "",
 "
 " Plugin: tpope/vim-fugitive
 
-call s:hi("gitcommitDiscardedFile", '', "", s:citylights.red,     "", "", "")
-call s:hi("gitcommitUntrackedFile", '', "", s:citylights.success, "", "", "")
-call s:hi("gitcommitSelectedFile",  '', "", s:citylights.blue,    "", "", "")
+call s:hi("gitcommitDiscardedFile", s:citylights.red.gui,   '', s:citylights.red.tui,     '', '', '')
+call s:hi("gitcommitUntrackedFile", s:citylights.green.gui, '', s:citylights.success.tui, '', '', '')
+call s:hi("gitcommitSelectedFile",  s:citylights.blue.gui,  '', s:citylights.blue.tui,    '', '', '')
 
 " =============================================================================
 " PHP
 " =============================================================================
 "
-" Plugin: StanAngeloff/php.vim
+" Plugin: jordanbrauer/php.vim
 
-call s:hi('phpVarSelector', s:none, s:none, s:citylights.brown, s:none, '', '')
-call s:hi('phpClasses',     s:none, s:none, s:citylights.steel, s:none, '', '')
-call s:hi('phpFunction',    s:none, s:none, s:citylights.aqua,  s:none, '', '')
-call s:hi('phpRegion',      s:none, s:none, s:citylights.aqua,  s:none, '', '')
-call s:hi('phpParent',      s:none, s:none, s:citylights.steel, s:none, '', '')
-call s:hi('phpUseClass',    s:none, s:none, s:citylights.steel, s:none, '', '')
+call s:hi('phpVarSelector', s:citylights.orange.gui, s:none, s:citylights.brown.tui, s:none, '', '')
+call s:hi('phpClasses',     s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+call s:hi('phpFunction',    s:citylights.aqua.gui,   s:none, s:citylights.aqua.tui,  s:none, '', '')
+call s:hi('phpRegion',      s:citylights.aqua.gui,   s:none, s:citylights.aqua.tui,  s:none, '', '')
+call s:hi('phpParent',      s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+call s:hi('phpUseClass',    s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+call s:hi('phpMethodsVar',  s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
 
-hi! link phpUseFunction phpUseClass
-hi! link phpNullValue Constant
-hi! link phpMethod phpFunction
-hi! link phpDocTags phpKeyword
+hi! link phpUseKeyword Keyword
+hi! link phpDocTags Keyword
 hi! link phpDocParam Type
+hi! link phpNullValue Constant
 hi! link phpDocIdentifier Identifier
+hi! link phpMethod phpFunction
+hi! link phpUseFunction phpUseClass
 
-call s:hi('phpFunc', '', '', s:citylights.green, s:none, '', '')
-hi! link phpDeclarations Constant
+hi! link phpFunc Define
+hi! link phpDeclareDirectives Constant
