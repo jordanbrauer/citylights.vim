@@ -295,6 +295,8 @@ call s:hi('phpParent',      s:citylights.steel.gui,  s:none, s:citylights.steel.
 call s:hi('phpUseClass',    s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
 call s:hi('phpMethodsVar',  s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
 
+hi! link Todo Keyword
+
 hi! link phpUseKeyword Keyword
 hi! link phpDocTags Keyword
 hi! link phpDocParam Type
