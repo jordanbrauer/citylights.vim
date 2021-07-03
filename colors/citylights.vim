@@ -12,7 +12,7 @@
 " making the port slightly easier.
 "
 " Project:    City Lights
-" Maintainer: Jordan Brauer <>
+" Maintainer: Jordan Brauer <18744334+jordanbrauer@users.noreply.github.com>
 " Repository: https://github.com/jordanbrauer/citylights.vim
 " Languages:  php
 " License:    CC BY-NC-ND 4.0
@@ -173,6 +173,7 @@ call s:hi('SpecialChar', s:citylights.red.tui,   s:none, s:citylights.red.tui,  
 " call s:hi('Delimiter', s:none, s:none, s:none, s:none, s:citylights.red.tui)
 " call s:hi('SpecialComment', s:none, s:none, s:none, s:none, s:citylights.red.tui)
 " call s:hi('Debug', s:none, s:none, s:none, s:none, s:citylights.red.tui)
+call s:hi('Todo',        s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '', '')
 
 " =============================================================================
 " NeoVim
@@ -305,3 +306,20 @@ hi! link phpUseFunction phpUseClass
 
 hi! link phpFunc Define
 hi! link phpDeclareDirectives Constant
+
+" =============================================================================
+" JavaScript
+" =============================================================================
+
+call s:hi('javascriptIdentifierName',  s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+call s:hi('javascriptObjectLabel',     s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+call s:hi('javascriptParens',          s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+
+hi! link javascriptDotNotation javascriptParens
+hi! link javascriptAsyncFuncKeyword Define
+hi! link javascriptBraces javascriptParens
+hi! link javascriptOpSymbol Keyword
+hi! link javascriptOpSymbols Keyword
+hi! link javascriptFuncArg Identifier
+hi! link javascriptVariable Define
+hi! link javascriptFuncKeyword Define
