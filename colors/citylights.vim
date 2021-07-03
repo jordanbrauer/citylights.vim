@@ -315,11 +315,25 @@ call s:hi('javascriptIdentifierName',  s:citylights.steel.gui,  s:none, s:cityli
 call s:hi('javascriptObjectLabel',     s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
 call s:hi('javascriptParens',          s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
 
+hi! link javascriptComma javascriptParens
+hi! link javascriptEndColons javascriptParens
+hi! link javascriptBrackets javascriptParens
+hi! link javascriptBlock javascriptParens
 hi! link javascriptDotNotation javascriptParens
 hi! link javascriptAsyncFuncKeyword Define
 hi! link javascriptBraces javascriptParens
 hi! link javascriptOpSymbol Keyword
 hi! link javascriptOpSymbols Keyword
+hi! link javascriptObjectLabelColon Keyword
 hi! link javascriptFuncArg Identifier
 hi! link javascriptVariable Define
 hi! link javascriptFuncKeyword Define
+
+" =============================================================================
+" JSX
+" =============================================================================
+
+call s:hi('jsxAttrib', s:citylights.aqua.gui,  s:none, s:citylights.aqua.tui, s:none, '', '')
+
+hi! link jsxExpressionBlock javascriptBlock
+hi! link jsxTagName Define
