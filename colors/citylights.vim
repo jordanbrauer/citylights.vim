@@ -12,7 +12,7 @@
 " making the port slightly easier.
 "
 " Project:    City Lights
-" Maintainer: Jordan Brauer <>
+" Maintainer: Jordan Brauer <18744334+jordanbrauer@users.noreply.github.com>
 " Repository: https://github.com/jordanbrauer/citylights.vim
 " Languages:  php
 " License:    CC BY-NC-ND 4.0
@@ -173,6 +173,7 @@ call s:hi('SpecialChar', s:citylights.red.tui,   s:none, s:citylights.red.tui,  
 " call s:hi('Delimiter', s:none, s:none, s:none, s:none, s:citylights.red.tui)
 " call s:hi('SpecialComment', s:none, s:none, s:none, s:none, s:citylights.red.tui)
 " call s:hi('Debug', s:none, s:none, s:none, s:none, s:citylights.red.tui)
+call s:hi('Todo',        s:citylights.azure.gui, s:none, s:citylights.azure.tui, s:none, '', '')
 
 " =============================================================================
 " NeoVim
@@ -197,7 +198,7 @@ call s:hi("iCursor",     '',                      s:none,                 '',   
 call s:hi("MatchParen",  s:none,                  s:citylights.white.gui, s:none,                  s:citylights.white.tui, '',          '')
 call s:hi("NonText",     s:citylights.black.gui,  '',                     s:citylights.black.tui,  '',                     '',          '')
 call s:hi("Normal",      s:none,                  s:none,                 "NONE",                  "NONE",                 '',          '')
-call s:hi("Pmenu",       s:none,                  s:citylights.black.gui, "NONE",                  s:citylights.black.tui, "NONE",      '')
+call s:hi("Pmenu",       s:none,                  '#333F49',              "NONE",                  s:citylights.black.tui, "NONE",      '')
 call s:hi("PmenuSbar",   s:none,                  s:citylights.black.gui, "NONE",                  s:citylights.black.tui, '',          '')
 call s:hi("PmenuSel",    s:citylights.black.gui,  s:citylights.blue.gui,  s:citylights.black.tui,  s:citylights.blue.tui,  '',          '')
 call s:hi("PmenuThumb",  s:none,                  s:citylights.white.gui, s:none,                  s:citylights.white.tui, '',          '')
@@ -248,8 +249,8 @@ call s:hi("CursorColumn", s:none,                 s:citylights.black.gui, s:none
 call s:hi("CursorLineNr", s:citylights.white.gui, s:none,                 s:citylights.white.tui, s:none,                 "NONE", '')
 call s:hi("LineNr",       s:citylights.grey.gui,  s:none,                 s:citylights.grey.tui,  s:none,                 "NONE", '')
 call s:hi("SignColumn",   s:none,                 s:citylights.black.gui, s:none,                 s:citylights.black.tui, '',     '')
-" call s:hi('Folded', s:nord3_gui, s:nord1_gui, s:nord3_term, s:nord1_term, s:bold, '')
-" call s:hi('FoldColumn', s:nord3_gui, s:nord0_gui, s:nord3_term, s:none, '', '')
+call s:hi('Folded',       s:citylights.steel.gui, s:none,                 s:citylights.steel.tui, s:none,                 s:bold, '')
+call s:hi('FoldColumn',   s:citylights.steel.gui, s:none,                 s:citylights.steel.tui, s:none,                 s:bold, '')
 
 call s:hi("GitGutterAdd",          s:citylights.green.gui,  '', s:citylights.success.tui, '', s:bold, '')
 call s:hi("GitGutterChange",       s:citylights.yellow.gui, '', s:citylights.yellow.tui,  '', s:bold, '')
@@ -307,3 +308,34 @@ hi! link phpUseFunction phpUseClass
 
 hi! link phpFunc Define
 hi! link phpDeclareDirectives Constant
+
+" =============================================================================
+" JavaScript
+" =============================================================================
+
+call s:hi('javascriptIdentifierName',  s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+call s:hi('javascriptObjectLabel',     s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+call s:hi('javascriptParens',          s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
+
+hi! link javascriptComma javascriptParens
+hi! link javascriptEndColons javascriptParens
+hi! link javascriptBrackets javascriptParens
+hi! link javascriptBlock javascriptParens
+hi! link javascriptDotNotation javascriptParens
+hi! link javascriptAsyncFuncKeyword Define
+hi! link javascriptBraces javascriptParens
+hi! link javascriptOpSymbol Keyword
+hi! link javascriptOpSymbols Keyword
+hi! link javascriptObjectLabelColon Keyword
+hi! link javascriptFuncArg Identifier
+hi! link javascriptVariable Define
+hi! link javascriptFuncKeyword Define
+
+" =============================================================================
+" JSX
+" =============================================================================
+
+call s:hi('jsxAttrib', s:citylights.aqua.gui,  s:none, s:citylights.aqua.tui, s:none, '', '')
+
+hi! link jsxExpressionBlock javascriptBlock
+hi! link jsxTagName Define
