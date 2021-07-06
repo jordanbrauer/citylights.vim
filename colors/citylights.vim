@@ -283,6 +283,15 @@ call s:hi("gitcommitUntrackedFile", s:citylights.green.gui, '', s:citylights.suc
 call s:hi("gitcommitSelectedFile",  s:citylights.blue.gui,  '', s:citylights.blue.tui,    '', '', '')
 
 " =============================================================================
+" HTML
+" =============================================================================
+
+hi! link htmlTag Special
+hi! link htmlEndTag htmlTag
+hi! link htmlTagName Define
+hi! link htmlArg Function
+
+" =============================================================================
 " PHP
 " =============================================================================
 "
@@ -296,8 +305,6 @@ call s:hi('phpParent',      s:citylights.steel.gui,  s:none, s:citylights.steel.
 call s:hi('phpUseClass',    s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
 call s:hi('phpMethodsVar',  s:citylights.steel.gui,  s:none, s:citylights.steel.tui, s:none, '', '')
 
-hi! link Todo Keyword
-
 hi! link phpUseKeyword Keyword
 hi! link phpDocTags Keyword
 hi! link phpDocParam Type
@@ -305,6 +312,7 @@ hi! link phpNullValue Constant
 hi! link phpDocIdentifier Identifier
 hi! link phpMethod phpFunction
 hi! link phpUseFunction phpUseClass
+hi! link phpUseNamespaceSeparator phpUseClass
 
 hi! link phpFunc Define
 hi! link phpDeclareDirectives Constant
