@@ -168,7 +168,7 @@ call s:hi('Structure',    s:citylights.sage.gui, s:none, s:citylights.green.tui,
 call s:hi('Typedef',      s:citylights.sage.gui, s:none, s:citylights.green.tui, s:none, '',     '')
 
 call s:hi('Special',     s:citylights.steel.gui, s:none, s:citylights.steel.tui, s:none, '', '')
-call s:hi('SpecialChar', s:citylights.red.tui,   s:none, s:citylights.red.tui,   s:none, '', '')
+call s:hi('SpecialChar', s:citylights.red.gui,   s:none, s:citylights.red.tui,   s:none, '', '')
 " call s:hi('Tag', s:none, s:none, s:none, s:none, s:citylights.red.tui)
 " call s:hi('Delimiter', s:none, s:none, s:none, s:none, s:citylights.red.tui)
 " call s:hi('SpecialComment', s:none, s:none, s:none, s:none, s:citylights.red.tui)
