@@ -198,7 +198,7 @@ call s:hi("iCursor",     '',                      s:none,                 '',   
 call s:hi("MatchParen",  s:none,                  s:citylights.white.gui, s:none,                  s:citylights.white.tui, '',          '')
 call s:hi("NonText",     s:citylights.black.gui,  '',                     s:citylights.black.tui,  '',                     '',          '')
 call s:hi("Normal",      s:none,                  s:none,                 "NONE",                  "NONE",                 '',          '')
-call s:hi("Pmenu",       s:none,                  '#333F49',              "NONE",                  s:citylights.black.tui, "NONE",      '')
+call s:hi("Pmenu",       s:none,                  '#14232d',              "NONE",                  s:citylights.black.tui, "NONE",      '')
 call s:hi("PmenuSbar",   s:none,                  s:citylights.black.gui, "NONE",                  s:citylights.black.tui, '',          '')
 call s:hi("PmenuSel",    s:citylights.black.gui,  s:citylights.blue.gui,  s:citylights.black.tui,  s:citylights.blue.tui,  '',          '')
 call s:hi("PmenuThumb",  s:none,                  s:citylights.white.gui, s:none,                  s:citylights.white.tui, '',          '')
