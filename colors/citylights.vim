@@ -41,6 +41,9 @@ let s:bold        = 'bold,'
 let s:italic      = 'italic,'
 let s:underline   = 'underline,'
 let s:none        = 'NONE'
+" dark black: #171d23
+" error red: #f88070
+" success green: #8bd49c
 let s:citylights  = {
   \ 'black':   { 'tui': '0', 'gui': '#1f252b' },
   \ 'white':   { 'tui': 7,   'gui': '#b7c5d3' },
@@ -243,6 +246,7 @@ call s:hi("StatusLineTermNC", s:none,                 s:citylights.black.gui, "N
 " Gutter
 " =============================================================================
 "
+" Plugin: mhinz/vim-signify
 " Plugin: airblade/vim-gitgutter
 
 call s:hi("CursorColumn", s:none,                 s:citylights.black.gui, s:none,                 s:citylights.black.tui, '',     '')
@@ -252,10 +256,27 @@ call s:hi("SignColumn",   s:none,                 s:citylights.black.gui, s:none
 call s:hi('Folded',       s:citylights.steel.gui, s:none,                 s:citylights.steel.tui, s:none,                 s:bold, '')
 call s:hi('FoldColumn',   s:citylights.steel.gui, s:none,                 s:citylights.steel.tui, s:none,                 s:bold, '')
 
-call s:hi("GitGutterAdd",          s:citylights.green.gui,  '', s:citylights.success.tui, '', s:bold, '')
-call s:hi("GitGutterChange",       s:citylights.yellow.gui, '', s:citylights.yellow.tui,  '', s:bold, '')
-call s:hi("GitGutterChangeDelete", s:citylights.red.gui,    '', s:citylights.red.tui,     '', s:bold, '')
-call s:hi("GitGutterDelete",       s:citylights.red.gui,    '', s:citylights.red.tui,     '', s:bold, '')
+call s:hi("diffAdded",         s:citylights.green.gui,  'none', s:citylights.success.tui, 'none', s:bold, '')
+call s:hi("diffRemoved",       s:citylights.red.gui,    'none', s:citylights.red.tui,     'none', s:bold, '')
+call s:hi("DiffChange",        s:citylights.yellow.gui, 'none', s:citylights.yellow.tui,  'none', s:bold, '')
+call s:hi("SignifyLineChange", s:citylights.yellow.gui, 'none', s:citylights.yellow.tui,  'none', s:bold, '')
+call s:hi("SignifyLineDelete", s:citylights.red.gui,    'none', s:citylights.red.tui,     'none', s:bold, '')
+call s:hi("SignifySignChange", s:citylights.yellow.gui, 'none', s:citylights.yellow.tui,  'none', s:bold, '')
+call s:hi("SignifySignDelete", s:citylights.red.gui,    'none', s:citylights.red.tui,     'none', s:bold, '')
+
+hi! link DiffAdd diffAdded
+hi! link DiffDelete diffRemoved
+
+hi! link GitGutterAdd diffAdded
+hi! link GitGutterChange DiffChange
+hi! link GitGutterChangeDelete diffRemoved
+hi! link GitGutterDelete diffRemoved
+
+" =============================================================================
+" TreeSitter
+" =============================================================================
+
+" TODO: add tree sitter highlighting
 
 " =============================================================================
 " LSP
